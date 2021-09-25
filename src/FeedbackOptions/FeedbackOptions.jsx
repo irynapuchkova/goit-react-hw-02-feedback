@@ -3,27 +3,25 @@ import PropTypes from 'prop-types';
 import {BtnList, Button} from './FeedbackOptions.styled';
 
 export default function FeedbackOptions({options, onLeaveFeedback}) {
-  console.log(options);
-  
+ 
   return (
     <BtnList>
-
-          <Button
-            type='button' onClick={onLeaveFeedback}
-            >Good
-          </Button>
-          <Button
-            type='button' onClick={onLeaveFeedback}
-            >Neutral
-          </Button>
-          <Button
-            type='button' onClick={onLeaveFeedback}
-           >Bad
-          </Button>
+      {options.map((option) =>
+      {return (
+        <Button
+          key={option}
+          type='button'
+          bgColor = {option}
+          onClick={onLeaveFeedback}
+        >
+          {option}
+        </Button>
+      )})}
     </BtnList>
   )
 }
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.shape(),
+  onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.string.isRequired)
 }
