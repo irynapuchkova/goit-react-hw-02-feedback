@@ -1,35 +1,49 @@
+import 'index.css';
 import React from "react";
+import PropTypes from 'prop-types';
 
-import { CounterList, CounterItem, Counter, Percentage, Total} from './Statistics.styled';
+import { FeedbackOptions, FeedbackItem, Counter, Percentage, Total} from './Statistics.styled';
   
-
-export default function Statistics({options, onTotal, onPosivePercent}) {
-
-  const total = onTotal();
+export default function Statistics({ good, neutral, bad, handleTotal, onPosivePercent }) {
+  const total = handleTotal();
   const positivePercentage = Number.parseInt(onPosivePercent(total));
+  const notification = "No feedback given";
   
+  if (total === 0) {
+    return notification;
+  } 
   return (
-    <CounterList>
+    <FeedbackOptions>
         
-      <CounterItem>Good:
-        <Counter>{options.good}</Counter></CounterItem>
-      <CounterItem>Neutral:
-        <Counter>{options.neutral}</Counter></CounterItem>
-      <CounterItem>Bad:
-        <Counter>{options.bad}</Counter></CounterItem>
+      <FeedbackItem>Good:
+        <Counter>{good}</Counter></FeedbackItem>
+      <FeedbackItem>Neutral:
+        <Counter>{neutral}</Counter></FeedbackItem>
+      <FeedbackItem>Bad:
+        <Counter>{bad}</Counter></FeedbackItem>
         
-      <CounterItem>Total: 
+      <FeedbackItem>Total: 
         <Total>{total}
         </Total>
-      </CounterItem>
+      </FeedbackItem>
         
-      <CounterItem>Positive feedback: 
+      <FeedbackItem>Positive feedback: 
         <Percentage>
           {positivePercentage >= 0
             ? positivePercentage
             : 0} %
         </Percentage>
-        </CounterItem>
-      </CounterList>
+      </FeedbackItem>
+    </FeedbackOptions>
   )
+}
+
+Statistics.propTypes = {
+  options: PropTypes.shape({
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
+  }),
+  handleTotal: PropTypes.func.isRequired,
+  onPosivePercent: PropTypes.func.isRequired,
 }

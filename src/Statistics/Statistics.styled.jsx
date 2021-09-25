@@ -1,24 +1,23 @@
 import styled from "@emotion/styled";
 
-export const CounterList = styled.ul`
+export const FeedbackOptions = styled.div`
 display: flex;
-padding-left: 20px;
-
 flex-direction: column;
+
+padding-left: 20px;
 `
-export const CounterItem = styled.li`
-text-decoration: none;
-margin-block-end: 10px;
+export const FeedbackItem = styled.p`
 display: flex;
+margin-block-end: 10px;
+
+text-decoration: none;
 color: darkslateblue;
 `
-
 export const Counter = styled.span`
 color: darkred;
 `
 export const Total = styled.span`
 color: darkred;
-
 `
 export const Percentage = styled.span`
 color: darkred;
