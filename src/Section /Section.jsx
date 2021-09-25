@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { Wrapper, Title } from './Section.styled';
 
-export default function Section ({children, title, primary}) {
+export default function Section({ children, title, primary}) {
   return (
     <Wrapper>
       {title &&
@@ -14,5 +14,6 @@ export default function Section ({children, title, primary}) {
 
 Section.propTypes = {
   title: PropTypes.string,
+  primary: PropTypes.bool,
   children: PropTypes.node,
 }
