@@ -1,32 +1,26 @@
 import 'normalize.css';
-import './App.styled';
 
 import { Component } from 'react';
 
-import Section from '../Section /Section';
-import Statistics from '../Statistics/Statistics';
-import FeedbackOptions from '../FeedbackOptions/FeedbackOptions';
-import { Container } from './App.styled';
+import Section from 'Section ';
+import Statistics from 'Statistics';
+import FeedbackOptions from 'FeedbackOptions';
+import Notification from './Notification';
+import {Container}  from './App.styled';
 
 
 class App extends Component {
-
-  static propTypes = {
-  // 
-  }
-
   state = {
     good: 0,
     neutral: 0,
     bad: 0
   }
   
-  
   onClick = (e) => {
-    const value = e.target.textContent.toLowerCase();
-    if (this.state.hasOwnProperty(value)) {
+    const option = e.target.textContent.toLowerCase();
+    if (this.state.hasOwnProperty(option)) {
       return (this.setState((prev) => ({
-        [value]: prev[value] + 1,
+        [option]: prev[option] + 1,
         })
       ))
     }
@@ -38,32 +32,32 @@ class App extends Component {
     return total;
   }
 
-
   countPositiveFeedbackPercentage = (total) => {
     const positivePercentage = this.state.good * 100 / total;
-    console.log(positivePercentage);
     return positivePercentage;
   }
 
   render() {
+    const options = Object.keys(this.state);
+
   return (
     <Container >
-      <Section title="Please, tell us about us"  primary>
+      <Section title="Please, tell us about us)))"  primary>
         <FeedbackOptions
-        options={this.state}
+        options = {options}
         onLeaveFeedback={this.onClick}
       />
       </Section>
       
-      <Section title = "Statistics">
-        <Statistics
-        good={0}
-        neutral={0}
-        bad={0}
+      <Section title="Statistics">
+        <Notification mesage = 'No feedback given'/>
+        <Statistics 
+        good={this.state.good}
+        neutral={this.state.neutral}
+        bad={this.state.bad}
         total={0}
         positivePercentage={0}
-        options={this.state}
-        onTotal={this.countTotalFeedback}
+        handleTotal={this.countTotalFeedback}
         onPosivePercent = {this.countPositiveFeedbackPercentage}
       />
       </Section>
