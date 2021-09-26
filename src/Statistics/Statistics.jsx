@@ -4,14 +4,7 @@ import PropTypes from 'prop-types';
 
 import { FeedbackOptions, FeedbackItem, Counter, Percentage, Total} from './Statistics.styled';
   
-export default function Statistics({ good, neutral, bad, handleTotal, onPosivePercent }) {
-  const total = handleTotal();
-  const positivePercentage = Number.parseInt(onPosivePercent(total));
-  const notification = "No feedback given";
-  
-  if (total === 0) {
-    return notification;
-  } 
+export default function Statistics({ good, neutral, bad, total, positivePercentage }) {
   return (
     <FeedbackOptions>
         
@@ -44,6 +37,6 @@ Statistics.propTypes = {
     neutral: PropTypes.number,
     bad: PropTypes.number,
   }),
-  handleTotal: PropTypes.func.isRequired,
-  onPosivePercent: PropTypes.func.isRequired,
+  total: PropTypes.string,
+  positivePercentage: PropTypes.number
 }
