@@ -5,7 +5,7 @@ import { Component } from 'react';
 import Section from 'Section ';
 import Statistics from 'Statistics';
 import FeedbackOptions from 'FeedbackOptions';
-import Notification from './Notification';
+import Notification from 'Notification';
 import {Container}  from './App.styled';
 
 
@@ -32,15 +32,17 @@ class App extends Component {
     return total;
   }
 
-  countPositiveFeedbackPercentage = (total) => {
+  countPositiveFeedbackPercentage = () => {
+    const total = this.countTotalFeedback();
     const positivePercentage = this.state.good * 100 / total;
-    return positivePercentage;
+    const parsedPositivePercentage = Number.parseInt(positivePercentage);
+    return parsedPositivePercentage;
   }
 
   render() {
     const options = Object.keys(this.state);
     const total = this.countTotalFeedback();
-    const positivePercentage = Number.parseInt(this.countPositiveFeedbackPercentage(total));
+    const positivePercentage = this.countPositiveFeedbackPercentage();
 
     return (
     <Container >
