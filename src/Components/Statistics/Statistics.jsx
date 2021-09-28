@@ -1,4 +1,3 @@
-import 'index.css';
 import React from "react";
 import PropTypes from 'prop-types';
 
@@ -7,7 +6,6 @@ import { FeedbackOptions, FeedbackItem, Counter, Percentage, Total} from './Stat
 export default function Statistics({ good, neutral, bad, total, positivePercentage }) {
   return (
     <FeedbackOptions>
-        
       <FeedbackItem>Good:
         <Counter>{good}</Counter></FeedbackItem>
       <FeedbackItem>Neutral:
@@ -16,16 +14,11 @@ export default function Statistics({ good, neutral, bad, total, positivePercenta
         <Counter>{bad}</Counter></FeedbackItem>
         
       <FeedbackItem>Total: 
-        <Total>{total}
-        </Total>
+        <Total>{total}</Total>
       </FeedbackItem>
         
       <FeedbackItem>Positive feedback: 
-        <Percentage>
-          {positivePercentage >= 0
-            ? positivePercentage
-            : 0} %
-        </Percentage>
+        <Percentage>{positivePercentage >= 0 ? positivePercentage : 0} %</Percentage>
       </FeedbackItem>
     </FeedbackOptions>
   )

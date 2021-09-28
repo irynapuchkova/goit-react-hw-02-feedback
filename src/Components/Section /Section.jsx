@@ -5,8 +5,7 @@ import { Wrapper, Title } from './Section.styled';
 export default function Section({ children, title, primary}) {
   return (
     <Wrapper>
-      {title &&
-        <Title primary={primary}>{title}</Title>}
+      {title && <Title primary={primary}>{title}</Title>}
       {children}
     </Wrapper>
   )

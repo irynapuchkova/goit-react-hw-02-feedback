@@ -8,12 +8,7 @@ export default function FeedbackOptions({options, onLeaveFeedback}) {
     <BtnList>
       {options.map((option) =>
       {return (
-        <Button
-          key={option}
-          type='button'
-          bgColor = {option}
-          onClick={onLeaveFeedback}
-        >
+        <Button key={option} type='button' bgColor = {option} onClick={onLeaveFeedback}>
           {option}
         </Button>
       )})}

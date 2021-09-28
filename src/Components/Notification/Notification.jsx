@@ -4,10 +4,7 @@ import {Message} from './Notification.styled';
 
 export default function Notification({message}) {
   return (
-    <Message
-      type='text'
-      >{message}
-    </Message>
+    <Message type='text'>{message}</Message>
   )
 }
 

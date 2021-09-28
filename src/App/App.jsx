@@ -2,14 +2,13 @@ import 'normalize.css';
 
 import { Component } from 'react';
 
-import Section from 'Section ';
-import Statistics from 'Statistics';
-import FeedbackOptions from 'FeedbackOptions';
-import Notification from 'Notification';
-import {Container}  from './App.styled';
+import Section from 'Components/Section ';
+import Statistics from 'Components/Statistics';
+import FeedbackOptions from 'Components/FeedbackOptions';
+import Notification from 'Components/Notification';
+import {Container} from './App.styled';
 
-
-class App extends Component {
+export default class App extends Component {
   state = {
     good: 0,
     neutral: 0,
@@ -18,12 +17,8 @@ class App extends Component {
   
   onClick = (e) => {
     const option = e.target.textContent.toLowerCase();
-    if (this.state.hasOwnProperty(option)) {
-      return (this.setState((prev) => ({
-        [option]: prev[option] + 1,
-        })
-      ))
-    }
+    return (this.setState((prev) => ({
+      [option]: prev[option] + 1,})))
   }
 
   countTotalFeedback = () =>{
@@ -46,31 +41,16 @@ class App extends Component {
 
     return (
     <Container >
-      <Section title="Please, tell us about us)))"  primary>
+      <Section title="Please, tell us about us)))" primary>
         <FeedbackOptions
-        options = {options}
-        onLeaveFeedback={this.onClick}
-      />
+          options={options}
+          onLeaveFeedback={this.onClick}/>
       </Section>
-      
       <Section title="Statistics">
-        {total === 0 &&
-          <Notification
-            message='No feedback given' />
-        }
-        {total !== 0 &&
-      < Statistics
-        good={this.state.good}
-        neutral={this.state.neutral}
-        bad={this.state.bad}
-        total={total}
-        positivePercentage={positivePercentage}
-      />}
-        
+        {total === 0 && <Notification message='No feedback given'/>}
+        {total !== 0 && <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={total} positivePercentage={positivePercentage}/>}
       </Section>
     </Container>
-  )
+    )
   }
 }
-
-export default App;
