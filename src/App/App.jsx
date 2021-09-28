@@ -42,9 +42,7 @@ export default class App extends Component {
     return (
     <Container >
       <Section title="Please, tell us about us)))" primary>
-        <FeedbackOptions
-          options={options}
-          onLeaveFeedback={this.onClick}/>
+        <FeedbackOptions options={options} onLeaveFeedback={this.onClick}/>
       </Section>
       <Section title="Statistics">
         {total === 0 && <Notification message='No feedback given'/>}

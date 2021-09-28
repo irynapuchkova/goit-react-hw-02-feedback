@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { Wrapper, Title } from './Section.styled';
+import {Wrapper, Title} from './Section.styled';
 
 export default function Section({ children, title, primary}) {
   return (
