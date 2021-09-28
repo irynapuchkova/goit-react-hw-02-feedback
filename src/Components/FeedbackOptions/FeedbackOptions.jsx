@@ -10,8 +10,8 @@ export default function FeedbackOptions({options, onLeaveFeedback}) {
       {return (
         <Button key={option} type='button' bgColor = {option} onClick={onLeaveFeedback}>
           {option}
-        </Button>
-      )})}
+        </Button>)
+      })}
     </BtnList>
   )
 }
